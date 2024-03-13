@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Détails du Livre</title>
+</head>
+<body>
+    <h1>{{ livre.titre }}</h1>
+    <p><strong>Description :</sexittrong> {{ livre.description }}</p>
+    <p><strong>ISBN :</strong> {{ livre.isbn }}</p>
+    <p><strong>Année de publication :</strong> {{ livre.annee_apparition }}</p>
+    <p><strong>Éditeur :</strong> {{ livre.editeur.nom }}</p>
+    <p><strong>Catégories :</strong> 
+        {% for categorie in livre.categories %}
+            {{ categorie.nom }}{% if not loop.last %}, {% endif %}
+        {% endfor %}
+    </p>
+    <p><strong>Auteurs :</strong> 
+        {% for auteur in livre.auteurs %}
+            {{ auteur.nom }}{% if not loop.last %}, {% endif %}
+        {% endfor %}
+    </p>
+    <a href="/livres">Retour à la liste des livres</a>
+</body>
+</html>

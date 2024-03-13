@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Livres</title>
+</head>
+<body>
+    {% if categorie %}
+        <h1>Livres dans la catégorie: {{ categorie.nom }}</h1>
+    {% else %}
+        <h1>Tous les Livres</h1>
+    {% endif %}
+    {% if livres %}
+        <ul>
+            {% for livre in livres %}
+                <li>
+                    <strong>{{ livre.titre }}</strong> par 
+                    {% for auteur in livre.auteurs %}
+                        {{ auteur.nom }}{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                    <br>
+                    <strong>Catégories:</strong> 
+                    {% for categorie in livre.categories %}
+                        {{ categorie.nom }}{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                    <br>
+                    <strong>Éditeur:</strong> {{ livre.editeur.nom }}
+                    <br>
+                    <a href="/livres/{{ livre.id }}">Voir les détails</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucun livre trouvé.</p>
+    {% endif %}
+    <a href="/">Retour à l'accueil</a>
+</body>
+</html>

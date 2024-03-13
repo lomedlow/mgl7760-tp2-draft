@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Associations Livres-Auteurs</title>
+</head>
+<body>
+    <h1>Associations Livres-Auteurs</h1>
+    {% for livre in livres %}
+        <h2>{{ livre.titre }}</h2>
+        <p>Auteurs:</p>
+        <ul>
+            {% for auteur in livre.auteurs %}
+                <li>{{ auteur.nom }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</body>
+</html>

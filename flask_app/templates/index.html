@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Bibliothèque en ligne</title>
+</head>
+<body>
+    <h1>Bienvenue dans notre bibliothèque en ligne</h1><br>
+    <p>Via <b>REDIS</b> ça fais : <b> {{ count }} </b> fois que j'accedes à l'interface </p><br>
+    <nav>
+        <ul>
+            <li><a href="/livres">Liste des livres</a></li>
+            <li><a href="/recherche/titre">
+                <a>Rechercher un livre par titre</a>
+
+                <form action="/recherche/titre" method="get">
+                    <input type="text" name="titre" placeholder="Rechercher un livre par titre">
+                    <input type="submit" value="Recherche">
+                </form>
+            </li>
+            <li><a href="/recherche/auteur">
+                <a>Rechercher un livre par auteur</a>
+                
+                <form action="/recherche/auteur" method="get">
+                    <input type="text" name="auteur" placeholder="Rechercher un livre par auteur">
+                    <input type="submit" value="Recherche">
+                </form>
+                
+            </li>
+        </ul>
+    </nav>
+    <nav>
+        <h2>Catégories</h2>
+        <ul>
+            {% for categorie in categories %}
+                <li><a href="/categories/{{ categorie.id }}">{{ categorie.nom }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+
+    
+</body>
+</html>
